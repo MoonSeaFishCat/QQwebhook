@@ -141,7 +141,6 @@ if __name__ == "__main__":
     logger.info("    ➤ 反代域名/webhook?secret=您的机器人密钥")
     logger.info("🌐 Websocket 接入地址：")
     logger.info("    ➤ wss://域名/ws/机器人密钥")
-    logger.info("")
     logger.info("💡 小贴士：")
     logger.info("    📍 服务端与框架同服务器时，可直接使用：")
     logger.info("    ➤ ws://本地IP:端口/ws/机器人密钥")

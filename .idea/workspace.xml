@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b878ebd-31ea-4d1c-86ef-300427403d17" name="更改" comment="添加一些必要的配置">
+    <list default="true" id="6b878ebd-31ea-4d1c-86ef-300427403d17" name="更改" comment="fix readme.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/function.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,20 +22,26 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="叱咤月海鱼鱼猫 &lt;ishuiliyi@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MoonSeaFishCat"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MoonSeaFishCat&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MoonSeaFishCat/QQwebhook",
-    "accountId": "8b2106e0-1d31-474d-9419-e3e694ca04c9"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MoonSeaFishCat/QQwebhook&quot;,
+    &quot;accountId&quot;: &quot;8b2106e0-1d31-474d-9419-e3e694ca04c9&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -127,12 +131,47 @@
       <option name="project" value="LOCAL" />
       <updated>1741922761547</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="美化了一下日志输出，修复了一些奇怪的问题">
+      <option name="closed" value="true" />
+      <created>1741933402020</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1741933402020</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'QQwebhook/master'&#10;&#10;# Conflicts:&#10;#&#9;README.md">
+      <option name="closed" value="true" />
+      <created>1741933494353</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1741933494353</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Merge remote-tracking branch 'QQwebhook/master'&#10;&#10;# Conflicts:&#10;#&#9;README.md">
+      <option name="closed" value="true" />
+      <created>1741933502216</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741933502216</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix readme.md">
+      <option name="closed" value="true" />
+      <created>1741933606519</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1741933606519</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <MESSAGE value="添加一些必要的配置" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加一些必要的配置" />
+    <MESSAGE value="美化了一下日志输出，修复了一些奇怪的问题" />
+    <MESSAGE value="Merge remote-tracking branch 'QQwebhook/master'&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
+    <MESSAGE value="fix readme.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix readme.md" />
   </component>
 </project>
