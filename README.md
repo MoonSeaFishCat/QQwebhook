@@ -26,7 +26,7 @@
 ### 安装依赖
 
 ```bash
-pip install pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 配置文件
