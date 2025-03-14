@@ -85,30 +85,6 @@ interface Message {
 }
 ```
 
-## 使用示例
-
-### 消息推送测试
-
-```bash
-curl -X POST "http://localhost:8000/webhook?secret=test123" \
-     -H "X-Bot-AppID: your_appid" \
-     -d '{"d":{"content":"测试消息"}}'
-```
-
-### Python 客户端
-
-```python
-import websockets
-import asyncio
-
-async def receive_messages():
-    async with websockets.connect('ws://localhost:8000/ws/test123') as ws:
-        while True:
-            msg = await ws.recv()
-            print(f"收到消息: {msg}")
-
-asyncio.run(receive_messages())
-```
 
 ## 高级配置
 
