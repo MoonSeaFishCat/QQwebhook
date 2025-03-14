@@ -138,9 +138,7 @@ graph TD
 
 ## 许可证
 
-MIT License © 2024 [Your Name]
-```
-
+AGPLV3 License © 2025 [叱咤月海鱼鱼猫]
 ## 关键要点说明
 
 1. **消息处理流程**：
