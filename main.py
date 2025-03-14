@@ -11,7 +11,7 @@ import uvicorn
 
 create_config_if_not_exists()
 app = FastAPI()
-leave= get_config("日志等级.leave")
+leave= get_config("日志等级.leave",)
 logger = configure_logger("QQwebhook",leave)
 # 跨域配置
 app.add_middleware(
@@ -30,6 +30,22 @@ active_connections_lock = asyncio.Lock()
 # 数据模型
 class Payload(BaseModel):
     d: dict
+
+
+
+@app.get("/")
+async def handle_root():
+    return {
+        "name": "QQwebhook",
+        "msg": "欢迎使用QQ机器人webhook服务使用前请先阅读使用文档"
+    }
+
+@app.get("/favicon.ico")
+async def handle_favicon():
+    return {
+        "name": "QQwebhook",
+        "msg": "欢迎使用QQ机器人webhook服务使用前请先阅读使用文档"
+    }
 
 @app.post("/webhook")
 async def handle_webhook(
@@ -119,14 +135,31 @@ async def websocket_endpoint(websocket: WebSocket, secret: str):
 
 
 if __name__ == "__main__":
-
-
+    logger.info("欢迎使用QQwebhook服务端")
+    logger.info("=======================🛠 使用方式 🛠======================")
+    logger.info("🔗 Webhook 接入地址：")
+    logger.info("    ➤ 反代域名/webhook?secret=您的机器人密钥")
+    logger.info("🌐 Websocket 接入地址：")
+    logger.info("    ➤ wss://域名/ws/机器人密钥")
+    logger.info("")
+    logger.info("💡 小贴士：")
+    logger.info("    📍 服务端与框架同服务器时，可直接使用：")
+    logger.info("    ➤ ws://本地IP:端口/ws/机器人密钥")
+    logger.info("=========================================================")
     host= get_config("服务端信息.ip")
     port = int(get_config("服务端信息.port"))
+    logger.info("✔ 服务端启动成功 ✔")
+    logger.info("╔══════════════════════ 接入地址 ═════════════════════")
+    logger.info(" 🌐  Websocket 实时连接")
+    logger.info(f"   ➤ [ws://{host}:{port}/ws/机器人密钥")
+    logger.info(" 🪝   Webhook 回调接口")
+    logger.info(f"  ➤ [http://{host}:{port}/webhook?secret=机器人密钥")
+    logger.info("╚══════════════════════════════════════════════════════")
     uvicorn.run(
         app,
         host=host,
         port=port,
         ws_ping_timeout=300,
+        log_level="warning",
         timeout_keep_alive=300
     )

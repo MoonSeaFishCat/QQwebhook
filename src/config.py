@@ -95,7 +95,7 @@ class ConfigManager:
             cls._instance = super().__new__(cls)
             cls._instance._yaml_handler = YAMLHandler(preserve_comments=True)
             cls._instance._config_path = cls._instance._find_config_file()
-            logger.info(f"配置文件路径: {cls._instance._config_path}")
+            # logger.info(f"配置文件路径: {cls._instance._config_path}")
         return cls._instance
 
     def _find_config_file(self) -> str:
@@ -125,7 +125,7 @@ class ConfigManager:
         try:
             current_mtime = os.path.getmtime(self._config_path)
             if current_mtime > self._last_modified or not self._config_cache:
-                logger.debug(f"正在重新加载配置文件: {self._config_path}")
+                #logger.debug(f"正在重新加载配置文件: {self._config_path}")
                 with open(self._config_path, 'r', encoding='utf-8') as f:
                     self._config_cache = self._yaml_handler.parser.load(f) or {}
                     self._last_modified = current_mtime
