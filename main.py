@@ -4,15 +4,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
-from src.config import*
+from src.config import *
 from src.envfix import create_config_if_not_exists
 from src.function import *
 import uvicorn
 
 create_config_if_not_exists()
 app = FastAPI()
-leave= get_config("日志等级.leave",)
-logger = configure_logger("QQwebhook",leave)
+leave = get_config("日志等级.leave", )
+logger = configure_logger("QQwebhook", leave)
 # 跨域配置
 app.add_middleware(
     CORSMiddleware,
@@ -32,7 +32,6 @@ class Payload(BaseModel):
     d: dict
 
 
-
 @app.get("/")
 async def handle_root():
     return {
@@ -40,12 +39,14 @@ async def handle_root():
         "msg": "欢迎使用QQ机器人webhook服务使用前请先阅读使用文档"
     }
 
+
 @app.get("/favicon.ico")
 async def handle_favicon():
     return {
         "name": "QQwebhook",
         "msg": "欢迎使用QQ机器人webhook服务使用前请先阅读使用文档"
     }
+
 
 @app.post("/webhook")
 async def handle_webhook(
@@ -63,10 +64,12 @@ async def handle_webhook(
     try:
         # 处理回调验证请求
         if "event_ts" in payload.d and "plain_token" in payload.d:
+            logger.debug("申请进行签名校验： %s", Payload)
             event_ts = payload.d["event_ts"]
             plain_token = payload.d["plain_token"]
+
             result = generate_signature(secret, event_ts, plain_token)
-            logger.info("生成签名: %s", result)
+            logger.debug("生成签名: %s", result)
             return result
 
         # 处理普通消息
@@ -130,10 +133,6 @@ async def websocket_endpoint(websocket: WebSocket, secret: str):
                 logger.info("清理连接: %s", secret)
 
 
-
-
-
-
 if __name__ == "__main__":
     logger.info("欢迎使用QQwebhook服务端")
     logger.info("=======================🛠 使用方式 🛠======================")
@@ -145,7 +144,7 @@ if __name__ == "__main__":
     logger.info("    📍 服务端与框架同服务器时，可直接使用：")
     logger.info("    ➤ ws://本地IP:端口/ws/机器人密钥")
     logger.info("=========================================================")
-    host= get_config("服务端信息.ip")
+    host = get_config("服务端信息.ip")
     port = int(get_config("服务端信息.port"))
     logger.info("✔ 服务端启动成功 ✔")
     logger.info("╔══════════════════════ 接入地址 ═════════════════════")

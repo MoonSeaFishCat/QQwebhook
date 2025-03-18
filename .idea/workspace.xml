@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b878ebd-31ea-4d1c-86ef-300427403d17" name="更改" comment="fix readme.md">
+    <list default="true" id="6b878ebd-31ea-4d1c-86ef-300427403d17" name="更改" comment="fix a little question">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/function.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +58,8 @@
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/桌面/项目实例/QQwebhook&quot;
   }
 }</component>
   <component name="RunManager">
@@ -163,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741933606519</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix a little question">
+      <option name="closed" value="true" />
+      <created>1741937014222</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741937014222</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -172,6 +180,7 @@
     <MESSAGE value="美化了一下日志输出，修复了一些奇怪的问题" />
     <MESSAGE value="Merge remote-tracking branch 'QQwebhook/master'&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
     <MESSAGE value="fix readme.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix readme.md" />
+    <MESSAGE value="fix a little question" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix a little question" />
   </component>
 </project>
