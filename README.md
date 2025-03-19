@@ -2,6 +2,14 @@
 
 基于 FastAPI 构建的 Webhook 转发服务，专为 QQ 机器人消息推送设计，支持实时消息转发和双向通信。
 
+该项目基于Bee的WebHook后端二开更新：
+
+Bee作者QQ:1872789834
+
+Bee官方交流群：261630174
+
+注：二次开发已获得许可
+
 ## 功能特性
 
 - 🚀 **实时消息推送**：通过 WebSocket 实现毫秒级消息转发
@@ -26,7 +34,7 @@
 ### 安装依赖
 
 ```bash
-pip install pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 配置文件
