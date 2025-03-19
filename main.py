@@ -64,7 +64,7 @@ async def handle_webhook(
     try:
         # 处理回调验证请求
         if "event_ts" in payload.d and "plain_token" in payload.d:
-            logger.debug("申请进行签名校验： %s", Payload)
+            logger.debug("申请进行签名校验： %s", Payload.d)
             event_ts = payload.d["event_ts"]
             plain_token = payload.d["plain_token"]
 
