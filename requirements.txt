@@ -6,7 +6,6 @@ docutils==0.21.2
 fastapi==0.115.11
 HTMLParser==0.0.2
 importlib_metadata==8.0.0
-ipython==8.0.2
 ipywidgets==8.1.5
 Jinja2==3.1.6
 jnius==1.1.0
