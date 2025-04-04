@@ -55,7 +55,7 @@ jobs:
         
         # 跨平台兼容处理（网页5核心技巧）
         cp dist/qqwebhook release/
-        cp -r static/ release/  # 静态资源
+        # cp -r static/ release/  # 静态资源
         
         # 生成日期戳（网页5时间戳规范）
         TIMESTAMP=$(date +%Y%m%d)
