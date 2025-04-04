@@ -18,15 +18,25 @@ jobs:
       with:
         fetch-depth: 0
 
+    # 新增系统构建依赖安装
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential python3-dev
+
     - name: Setup Python 3.10
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
         cache: 'pip'
 
+    - name: Install build tools
+      run: |
+        python -m pip install --upgrade pip setuptools wheel
+        pip install cython==0.29.36  # 显式安装 Cython
+
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
         pip install -r requirements.txt pyinstaller
         pip check
 
