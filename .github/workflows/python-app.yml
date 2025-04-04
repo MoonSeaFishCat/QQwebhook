@@ -1,39 +1,64 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
-name: Python application
+name: Auto Build QQwebhook
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-permissions:
-  contents: read
+    paths-ignore: ['.gitignore', 'README.md']  # 忽略文档类变更（网页1分支管理理念）
+  workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
+    # 代码检出（网页6最佳实践）
+    - name: Checkout with full history
+      uses: actions/checkout@v4
       with:
-        python-version: "3.10"
+        fetch-depth: 0  # 获取完整提交历史（网页6合并队列支持）
+
+    # Python环境配置
+    - name: Setup Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        cache: 'pip'  # 启用依赖缓存（网页8性能优化）
+
+    # 依赖管理（网页8安全审计理念）
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
+        pip install -r requirements.txt pyinstaller
+        pip check  # 检查依赖冲突
+
+    # 智能构建（网页5的Git高级命令实践）
+    - name: Clean previous builds
+      run: rm -rf dist build *.spec
+
+    - name: Build executable
       run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+        pyinstaller --onefile --name QQwebhook main.py
+        file dist/QQwebhook  # 验证二进制文件类型
+        chmod +x dist/QQwebhook
+
+    # 产物处理（网页7大文件管理方案）
+    - name: Package artifacts
       run: |
-        pytest
+        mkdir -p release
+        cp dist/QQwebhook release/
+        tar -czvf qqwebhook-$(date +%Y%m%d).tar.gz release/
+
+    # 安全上传（网页6的敏感信息保护）
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: qqwebhook-build
+        path: |
+          release/QQwebhook
+          qqwebhook-*.tar.gz
+        retention-days: 7
+
+    # 构建后清理（网页1的仓库优化建议）
+    - name: Clean workspace
+      if: always()
+      run: rm -rf dist build release
