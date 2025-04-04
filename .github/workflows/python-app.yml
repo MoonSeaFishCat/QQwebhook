@@ -1,8 +1,9 @@
-name: AutoBuild-QQwebhook-MultiPlatform
+name: AutoBuild-QQwebhook
 
 on:
   push:
-    paths-ignore: 
+    branches: [ master ]
+    paths-ignore:
       - '​**​/*.md'
       - '​**​/*.txt'
   workflow_dispatch:
@@ -17,16 +18,14 @@ jobs:
         include:
           - os: ubuntu-latest
             ext: ''
-            build-deps: "sudo apt-get install -y build-essential python3-dev"
+            build-deps: sudo apt-get install -y build-essential python3-dev
           - os: windows-latest
             ext: '.exe'
-            build-deps: "echo 'Windows无需额外系统依赖'"
+            build-deps: echo "Skipping system deps on Windows"
       fail-fast: false
 
-    timeout-minutes: 30
-
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
@@ -49,8 +48,6 @@ jobs:
           ~/.cache/pip
           ​**​/__pycache__
         key: ${{ runner.os }}-pip-${{ hashFiles('​**​/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
 
     - name: Install build tools
       run: |
@@ -64,41 +61,41 @@ jobs:
 
     - name: Clean workspace
       run: |
-        rm -rf dist build __pycache__ || rmdir /s /q dist build __pycache__
+        rm -rf dist build __pycache__ 2>/dev/null || rmdir /s /q dist build __pycache__
 
     - name: Build executable
       run: |
-        pyinstaller --onefile --name qqwebhook${{ matrix.ext }} main.py
+        pyinstaller --onefile --name QQwebhook${{ matrix.ext }} main.py
         if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-          chmod +x dist/qqwebhook.exe
+          chmod +x dist/QQwebhook.exe
         fi
 
     - name: Package artifacts
       run: |
         mkdir release
         
-        # 跨平台文件拷贝
+        # 跨平台文件处理
         if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-          copy dist\\qqwebhook.exe release\\
+          copy dist\\QQwebhook.exe release\\
         else
-          cp dist/qqwebhook release/
+          cp dist/QQwebhook release/
         fi
 
-        # 生成时间戳（兼容Windows）
-        TIMESTAMP=$(date +%Y%m%d)
+        # 生成时间戳 (兼容Windows/Linux)
+        TIMESTAMP=$(date +%Y%m%d-%H%M%S)
         
         # 压缩打包
-        cd release && zip -r ../qqwebhook-$TIMESTAMP-${{ matrix.os }}.zip ./*
+        cd release && zip -r ../QQwebhook-${{ matrix.os }}-$TIMESTAMP.zip ./*
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: qqwebhook-${{ matrix.os }}
+        name: QQwebhook-${{ matrix.os }}
         path: |
-          qqwebhook-*.zip
+          QQwebhook-*.zip
         retention-days: 7
 
-    # 安全扫描（可选）
+    # 安全扫描 (可选)
     - name: Dependency audit
       if: always()
       run: pip-audit --require-hashes -r requirements.txt
