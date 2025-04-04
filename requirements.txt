@@ -19,7 +19,7 @@ pydantic==2.5.0
 pyOpenSSL==25.0.0
 railroad==0.5.0
 ruamel.base==1.0.0
-Sphinx==8.2.3
+Sphinx==3.0.3
 thread==2.0.5
 tornado==6.5.1
 truststore==0.10.1
